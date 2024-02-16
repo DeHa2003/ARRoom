@@ -6,35 +6,28 @@ namespace Lessons.Architecture
 {
     public class NotificationInteractor : Interactor
     {
-        public Notification notificationPref { get; private set; }
-        private NotificationControl notificationControl;
+        private INotification notification;
 
-        private Notification spawnNotification;
-
-        public void SetData(Notification notification, NotificationControl notificationControl)
+        public void SetData(INotification notification)
         {
-            this.notificationPref = notification;
-            this.notificationControl = notificationControl;
+            this.notification = notification;
         }
 
         public void CreateNotification(string hand, string description)
         {
-            if (spawnNotification != null) 
-            {
-                DestroyNotification();
-            }
-
-            spawnNotification = notificationControl.SetNotificationPanel(notificationPref);
-            spawnNotification.Initialize();
-            spawnNotification.SetText(hand, description);
-            spawnNotification.OpenPanel();
+            notification.CreateNotification(hand, description);
         }
 
-        private void DestroyNotification()
+        public void DestroyNotification()
         {
-            spawnNotification.ClosePanel();
-            spawnNotification = null;
+            notification.DestroyNotification();
         }
     }
+}
+
+public interface INotification
+{
+    void CreateNotification(string hand, string description);
+    void DestroyNotification();
 }
 

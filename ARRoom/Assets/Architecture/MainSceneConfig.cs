@@ -15,7 +15,7 @@ public class MainSceneConfig : SceneConfig
 
         //CreateInteractor<SettingsInteractor>(interactorsMap);
         //CreateInteractor<AudioInteractor>(interactorsMap);
-        //CreateInteractor<NotificationInteractor>(interactorsMap);
+        CreateInteractor<NotificationInteractor>(interactorsMap);
         CreateInteractor<PanelAnimationInteractor>(interactorsMap);
         CreateInteractor<RoomInteractor>(interactorsMap);
         CreateInteractor<PointInPlaneDetectionInteractor>(interactorsMap);

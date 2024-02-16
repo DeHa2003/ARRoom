@@ -7,10 +7,9 @@ namespace Lessons.Architecture
     public class AudioInteractor : Interactor
     {
         private AudioManager audioManager;
-        public void SetData(AudioManager audioManager, string startSound)
+        public void SetData(AudioManager audioManager)
         {
             this.audioManager = audioManager;
-            audioManager.PlayBackgroundSound(startSound);
         }
 
         public void PlayBackgroundSound(string nameClip)

@@ -7,7 +7,6 @@ public class MenuInputData : MonoBehaviour
 {
     [Header("Notification")]
     [SerializeField] protected NotificationControl notificationControl;
-    [SerializeField] protected Notification notification;
 
     [Header("Audio")]
     [SerializeField] protected AudioManager audioManager;
@@ -21,8 +20,8 @@ public class MenuInputData : MonoBehaviour
         notificationInteractor = Game.GetInteractor<NotificationInteractor>();
         settingsInteractor = Game.GetInteractor<SettingsInteractor>();
 
-        audioInteractor.SetData(audioManager, "Menu");
-        notificationInteractor.SetData(notification, notificationControl);
+        audioInteractor.SetData(audioManager);
+        notificationInteractor.SetData(notificationControl);
         settingsInteractor.SetData(audioManager);
     }
 }

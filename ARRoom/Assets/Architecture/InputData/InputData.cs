@@ -20,7 +20,7 @@ public abstract class InputData : MonoBehaviour
         audioInteractor = Game.GetInteractor<AudioInteractor>();
         notificationInteractor = Game.GetInteractor<NotificationInteractor>();
 
-        notificationInteractor.SetData(notification, notificationControl);
+        notificationInteractor.SetData(notificationControl);
         //audioInteractor.SetData(audioManager, );
     }
 }

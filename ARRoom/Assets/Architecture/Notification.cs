@@ -38,7 +38,7 @@ public class Notification : MovePanel
         if (tween != null) { tween.Kill(); }
 
         panel.SetActive(true);
-        tween = transform.DOLocalMove(from + new Vector3(-175, 0, 0), time).OnComplete(() =>
+        tween = transform.DOLocalMove(from + new Vector3(0, -50, 0), time).OnComplete(() =>
         {
             Invoke(nameof(ClosePanel), 2);
         });
