@@ -9,6 +9,7 @@ public class MainScenePanelsControl : PanelsControl
     [SerializeField] private Panel choiceOtherPointPanel_1;
     [SerializeField] private Panel choiceOtherPointPanel_2;
     [SerializeField] private Panel firstViewMapPanel;
+    [SerializeField] private Panel confirmationRoomSizePanel;
     [SerializeField] private Panel secondViewMapPanel;
     [SerializeField] private Panel menuPanel;
 
@@ -20,6 +21,7 @@ public class MainScenePanelsControl : PanelsControl
         choiceMainPointPanel.Initialize();
         choiceOtherPointPanel_1.Initialize();
         choiceOtherPointPanel_2.Initialize();
+        confirmationRoomSizePanel.Initialize();
         firstViewMapPanel.Initialize();
         secondViewMapPanel.Initialize();
 

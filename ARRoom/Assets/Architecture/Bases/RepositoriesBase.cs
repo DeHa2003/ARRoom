@@ -25,11 +25,6 @@ namespace Lessons.Architecture
             return (T)repositoriesMap[type];
         }
 
-
-
-
-
-
         //События
         public void SendOnCreateToAllRepositories()
         {

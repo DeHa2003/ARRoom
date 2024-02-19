@@ -16,6 +16,7 @@ public class ChoiceFirstPointPanel : MovePanel
     public override void OpenPanel()
     {
         base.OpenPanel();
+        PlanePoints.Points.Clear();
         spawnPoint.ActivateSpawn();
     }
 

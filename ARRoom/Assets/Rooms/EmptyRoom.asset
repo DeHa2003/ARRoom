@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab4873b8e08a55c43b59db3f7c5ae6b3, type: 3}
-  m_Name: SchoolRoom
+  m_Name: EmptyRoom
   m_EditorClassIdentifier: 
-  roomID: 1
-  nameRoom: "\u0428\u043A\u043E\u043B\u044C\u043D\u044B\u0439 \u043A\u0430\u0431\u0438\u043D\u0435\u0442"
-  room: {fileID: 1291117803157077164, guid: 7e06535434afad54fb503baa47c82510, type: 3}
+  roomID: 0
+  nameRoom: "\u0422\u0435\u0441\u0442\u043E\u0432\u0430\u044F \u043A\u043E\u043C\u043D\u0430\u0442\u0430"
+  room: {fileID: 1291117803157077164, guid: 841f295c57fc91141b7f11c8139456a1, type: 3}

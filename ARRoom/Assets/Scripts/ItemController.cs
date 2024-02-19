@@ -86,6 +86,11 @@ public class ItemController : MonoBehaviour
     {
         int indexPosSpawn = Random.Range(0, freeItems.Count);
 
+        if(indexPosSpawn == 0)
+        {
+            return;
+        }
+
         Item spawningItem = Instantiate(freeItems[indexPosSpawn]);
         spawningItem.transform.localScale = new Vector3(scaleValueForSpawn, scaleValueForSpawn, scaleValueForSpawn);
         spawningItem.transform.SetPositionAndRotation(freePosSpawn[indexPosSpawn].position, freePosSpawn[indexPosSpawn].rotation);
@@ -102,7 +107,13 @@ public class ItemController : MonoBehaviour
 
     public void SpawnSecondItems()
     {
-        for (int i = 0; i < Random.Range(5, freeItems.Count); i++)
+        int indexPosSpawn = Random.Range(0, freeItems.Count);
+        if(indexPosSpawn == 0)
+        {
+            return;
+        }
+
+        for (int i = 0; i < indexPosSpawn; i++)
         {
             SpawnSecondObject(ItemStatus.Change);
         }
