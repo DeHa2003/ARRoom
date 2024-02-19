@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class ChoiceSecondPointPanel : Panel
+public class ChoiceSecondPointPanel : MovePanel
 {
     [SerializeField] private SpawnSecondPoint secondPoint;
     public override void Initialize()

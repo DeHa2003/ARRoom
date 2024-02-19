@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SecondViewMapPanel : Panel
+public class SecondViewMapPanel : MovePanel
 {
     [SerializeField] private HealthVisualize healthVisualize;
     [SerializeField] private TimerVisualize timerVisualize;

@@ -1,4 +1,5 @@
 using Lessons.Architecture;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,13 @@ public class GlobalEvents_GameScene : MonoBehaviour
         notificationInteractor = Game.GetInteractor<NotificationInteractor>();
 
         hitItemsInteractor.OnHitOther += RemoveHealth;
+        hitItemsInteractor.OnHitChangeItem += DestroyItem;
         healthInteractor.OnPlayerOutOfLives += DiactivateFindinItems;
+    }
+
+    private void DestroyItem(Item item)
+    {
+        Destroy(item.gameObject);
     }
 
     public void DiactivateFindinItems()
@@ -25,7 +32,7 @@ public class GlobalEvents_GameScene : MonoBehaviour
         notificationInteractor.CreateNotification("Сообщение", "Вы проиграли");
     }
 
-    private void RemoveHealth(string name)
+    private void RemoveHealth(Item item)
     {
         notificationInteractor.CreateNotification("Сообщение", "Минус жизка");
         healthInteractor.RemoveHealth(this);

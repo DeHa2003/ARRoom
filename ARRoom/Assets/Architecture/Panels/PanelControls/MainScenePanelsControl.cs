@@ -1,3 +1,4 @@
+using Lessons.Architecture;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,31 +10,19 @@ public class MainScenePanelsControl : PanelsControl
     [SerializeField] private Panel choiceOtherPointPanel_2;
     [SerializeField] private Panel firstViewMapPanel;
     [SerializeField] private Panel secondViewMapPanel;
+    [SerializeField] private Panel menuPanel;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        //PlaneDetection.OnFoundPlanes += OnFoundPlanes;
-        //PlaneDetection.OnFoundZeroPosition += OnFoundZeroPos;
-
+        menuPanel.Initialize();
         choiceMainPointPanel.Initialize();
         choiceOtherPointPanel_1.Initialize();
         choiceOtherPointPanel_2.Initialize();
         firstViewMapPanel.Initialize();
         secondViewMapPanel.Initialize();
 
-        OpenPanel(choiceMainPointPanel);
+        OpenPanel(menuPanel);
     }
-
-    //private void OnFoundPlanes()
-    //{
-    //    OpenPanel(choicePlacePanel);
-    //    //PlaneDetection.OnFoundPlanes -= OnFoundPlanes;
-    //}
-    //private void OnFoundZeroPos()
-    //{
-    //    OpenPanel(choiceARTargetPanel);
-    //    //PlaneDetection.OnFoundZeroPosition -= OnFoundZeroPos;
-    //}
 }

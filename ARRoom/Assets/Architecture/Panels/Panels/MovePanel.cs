@@ -1,8 +1,5 @@
 using DG.Tweening;
 using Lessons.Architecture;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
 public class MovePanel : Panel
@@ -23,7 +20,10 @@ public class MovePanel : Panel
     {
         if (tween != null) { tween.Kill(); }
 
-        tween = panel.transform.DOLocalMove(from, time).OnComplete(() => panel.SetActive(false));
+        tween = panel.transform.DOLocalMove(from, time).OnComplete(() =>
+        {
+            panel.SetActive(false);
+        });
         animationInteractor.CanvasGroupAlpha(canvasGroup, 1, 0, time);
     }
 

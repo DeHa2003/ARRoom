@@ -8,12 +8,10 @@ public class SpawnMainPoint : MonoBehaviour
 {
     public UnityEvent OnPointSpawn;
     private PointInPlaneDetectionInteractor detectionInteractor;
-    private NotificationInteractor notificationInteractor;
 
     public void Initialize()
     {
         detectionInteractor = Game.GetInteractor<PointInPlaneDetectionInteractor>();
-        notificationInteractor = Game.GetInteractor<NotificationInteractor>();
     }
 
     public void ActivateSpawn()
@@ -29,7 +27,6 @@ public class SpawnMainPoint : MonoBehaviour
 
     private void FindPosition()
     {
-        notificationInteractor.CreateNotification("hrtjertrtreer", "Вы заспавнили первую точку");
         OnPointSpawn?.Invoke();
     }
 }

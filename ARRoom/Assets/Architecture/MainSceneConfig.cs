@@ -23,7 +23,7 @@ public class MainSceneConfig : SceneConfig
         CreateInteractor<HitItemsInteractor>(interactorsMap);
         CreateInteractor<HealthInteractor>(interactorsMap);
         //CreateInteractor<ShopInteractor>(interactorsMap);
-        //CreateInteractor<ScoreInteractor>(interactorsMap);
+        CreateInteractor<ScoreInteractor>(interactorsMap);
         //CreateInteractor<BallsInteractor>(interactorsMap);
         //CreateInteractor<BankInteractor>(interactorsMap);
 
@@ -36,7 +36,7 @@ public class MainSceneConfig : SceneConfig
 
         //CreateRepository<SettingsRepository>(repositoriesMap);
         //CreateRepository<ShopRepository>(repositoriesMap);
-        //CreateRepository<ScoreRepository>(repositoriesMap);
+        CreateRepository<ScoreRepository>(repositoriesMap);
         //CreateRepository<BallsRepository>(repositoriesMap);
         //CreateRepository<BankRepository>(repositoriesMap);
 

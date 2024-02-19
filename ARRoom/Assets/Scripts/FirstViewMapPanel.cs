@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class FirstViewMapPanel : Panel
+public class FirstViewMapPanel : MovePanel
 {
     [SerializeField] private TimerVisualize panelTimer;
 
@@ -23,7 +23,7 @@ public class FirstViewMapPanel : Panel
     {
         base.OpenPanel();
 
-        roomInteractor.BuildRoom();
+        roomInteractor.BuildRoom(0);
 
         panelTimer.OnFinishTimerEvent.AddListener(() =>
         {

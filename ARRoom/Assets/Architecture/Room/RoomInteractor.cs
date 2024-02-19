@@ -14,9 +14,9 @@ namespace Lessons.Architecture
             this.roomController = roomController;
         }
 
-        public void BuildRoom(float height = 2, float offsetSize = 1)
+        public void BuildRoom(int index, float height = 2, float offsetSize = 1)
         {
-            roomController.BuildRoom(height, offsetSize);
+            roomController.BuildRoom(index, height, offsetSize);
         }
 
         public void SpawnObjects()
@@ -34,17 +34,17 @@ namespace Lessons.Architecture
             roomController.HideRoom(time, OnComplete);
         }
 
-        public void DestroyRoom()
+        public void DestroyCurrentRoom()
         {
-            roomController.DestroyRoom();
+            roomController.DestroyCurrentRoom();
         }
     }
 }
 
 public interface IRoomController
 {
-    public void BuildRoom(float height, float offsetSize);
-    public void DestroyRoom();
+    public void BuildRoom(int index, float height, float offsetSize);
+    public void DestroyCurrentRoom();
     public void SpawnObjects();
     public void HideRoom(float time, Action OnComplete);
     public void ShowRoom(float time, Action OnComplete);

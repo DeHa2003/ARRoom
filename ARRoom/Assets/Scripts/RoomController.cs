@@ -12,13 +12,13 @@ public class RoomController : MonoBehaviour, IRoomController
     public Action OnHideRoom;
 
 
-    [SerializeField] private Room roomPrefab;
+    [SerializeField] private RoomObject[] roomPrefab;
 
     private List<Point> pointsToSpawn => PlanePoints.Points;
 
-    public void BuildRoom(float height, float offsetSize)
+    public void BuildRoom(int index, float height, float offsetSize)
     {
-        CurrentRoom = Instantiate(roomPrefab);
+        CurrentRoom = Instantiate(roomPrefab[index].Room);
 
         Vector3 sideA = pointsToSpawn[1].transform.position - pointsToSpawn[0].transform.position;
         Vector3 sideB = pointsToSpawn[2].transform.position - pointsToSpawn[0].transform.position;
@@ -41,7 +41,7 @@ public class RoomController : MonoBehaviour, IRoomController
         CurrentRoom.Initialize();
     }
 
-    public void DestroyRoom()
+    public void DestroyCurrentRoom()
     {
         if(CurrentRoom == null)
         {

@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public delegate void OnHit(string nameItem);
+public delegate void OnHit(Item item);
 
 namespace Lessons.Architecture
 {
@@ -37,22 +37,22 @@ namespace Lessons.Architecture
                     {
                         if (Input.GetMouseButtonDown(0))
                         {
-                            if (hit.collider.TryGetComponent(out IItem item))
+                            if (hit.collider.TryGetComponent(out Item item))
                             {
                                 if (item.ItemStatus == ItemStatus.Change)
                                 {
-                                    OnHitChangeItem?.Invoke(item.NameItem);
+                                    OnHitChangeItem?.Invoke(item);
                                     Debug.Log("Ударили правильный предмет");
                                 }
                                 else
                                 {
-                                    OnHitOther?.Invoke(item.NameItem);
+                                    OnHitOther?.Invoke(item);
                                     Debug.Log("Ударили неправильный предмет");
                                 }
                             }
                             else
                             {
-                                OnHitOther?.Invoke("Другой объект");
+                                OnHitOther?.Invoke(null);
                                 Debug.Log("Ударили вообще не спавнящийся предмет");
                             }
                         }

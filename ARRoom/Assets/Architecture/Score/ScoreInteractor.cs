@@ -9,8 +9,10 @@ namespace Lessons.Architecture
     {
         public Action OnChangedScore;
         public Action OnChangedMaxScore;
+
         public int score { get; private set; }
         public int maxScore { get; private set; }
+        public float KPD { get; private set; }
 
         private ScoreRepository scoreRepository;
         public override void Initialize()

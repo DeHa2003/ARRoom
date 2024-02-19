@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -9,14 +8,13 @@ using UnityEngine.XR.ARSubsystems;
 public class PlaneDetection : MonoBehaviour, IPointInPlaneDetection
 {
     private Action OnSpawnPoint;
-    //public Action OnFoundPlanes;
 
     [SerializeField] private VisibleLine visibleLine;
     [SerializeField] private ARRaycastManager raycastManager;
     [SerializeField] private GameObject marker; 
     [SerializeField] private Point pointPref;
 
-    private Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
+    private Vector2 screenCenter = new(Screen.width / 2, Screen.height / 2);
     private bool isActive = false;
 
     public void AddActionOnSpawn(Action action)
@@ -32,7 +30,7 @@ public class PlaneDetection : MonoBehaviour, IPointInPlaneDetection
     public void ActivateFindDefaultPoint()
     {
         StartCoroutine(FindPoint());
-        //StartCoroutine(FindPoint_Coroutine(description));
+        //StartCoroutine(FindPoint_Coroutine());
     }
 
     public void ActivateFindMinMaxLengthFromPoint(Vector3 point, float maxLength, float minLength = 0)
@@ -50,7 +48,7 @@ public class PlaneDetection : MonoBehaviour, IPointInPlaneDetection
         //StartCoroutine(FindPoint_Coroutine(description));
     }
 
-    private IEnumerator FindPoint_Coroutine(string description = null)
+    private IEnumerator FindPoint_Coroutine()
     {
         isActive = true;
 
@@ -143,8 +141,7 @@ public class PlaneDetection : MonoBehaviour, IPointInPlaneDetection
     //                        isActive = false;
     //                        OnSpawnPoint?.Invoke();
     //                        Point point = Instantiate(pointPref, raycastHits[0].pose.position, pointPref.transform.rotation);
-    //                        point.SetData(description);
-    //                        points.AddPoint(point);
+    //                        PlanePoints.AddPoint(point);
     //                    }
     //                }
     //            }

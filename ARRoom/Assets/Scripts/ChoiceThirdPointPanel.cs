@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChoiceThirdPointPanel : Panel
+public class ChoiceThirdPointPanel : MovePanel
 {
     [SerializeField] private SpawnThirdPoint thirdPoint;
     public override void Initialize()

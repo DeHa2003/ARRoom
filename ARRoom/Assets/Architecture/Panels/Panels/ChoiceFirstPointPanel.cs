@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ChoiceFirstPointPanel : Panel
+public class ChoiceFirstPointPanel : MovePanel
 {
     [SerializeField] private SpawnMainPoint spawnPoint;
     public override void Initialize()
