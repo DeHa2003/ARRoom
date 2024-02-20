@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -7,6 +8,9 @@ namespace Lessons.Architecture
 {
     public class HitItemsInteractor : Interactor
     {
+        public event Action OnActivateFind;
+        public event Action OnDiactivateFind;
+
         public event OnHit OnHitOther;
         public event OnHit OnHitChangeItem;
 
@@ -27,6 +31,8 @@ namespace Lessons.Architecture
 
         private IEnumerator ActivateFind_Coroutine()
         {
+            OnActivateFind?.Invoke();
+
             while (isActive)
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -58,6 +64,7 @@ namespace Lessons.Architecture
                         }
                     }
                 }
+                OnDiactivateFind?.Invoke();
                 yield return null;
             }
         }

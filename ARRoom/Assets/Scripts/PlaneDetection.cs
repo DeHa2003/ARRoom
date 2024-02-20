@@ -29,8 +29,8 @@ public class PlaneDetection : MonoBehaviour, IPointInPlaneDetection
 
     public void ActivateFindDefaultPoint()
     {
-        StartCoroutine(FindPoint());
-        //StartCoroutine(FindPoint_Coroutine());
+        //StartCoroutine(FindPoint());
+        StartCoroutine(FindPoint_Coroutine());
     }
 
     public void ActivateFindMinMaxLengthFromPoint(Vector3 point, float maxLength, float minLength = 0)
@@ -112,63 +112,21 @@ public class PlaneDetection : MonoBehaviour, IPointInPlaneDetection
         }
     }
 
-    //IEnumerator FindMinMaxLengthOfPoint_Coroutine(Vector3 fromPoint, float maxLength, float minLength, string description = null)
-    //{
-    //    isActive = true;
-
-    //    while (isActive)
-    //    {
-    //        List<ARRaycastHit> raycastHits = new();
-
-    //        if (raycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), raycastHits, TrackableType.Planes))
-    //        {
-    //            if (raycastHits.Count > 0)
-    //            {
-    //                float distance = Vector3.Distance(fromPoint, raycastHits[0].pose.position);
-    //                visibleLine.SetSecondPos(raycastHits[0].pose.position);
-
-    //                if (distance > maxLength || distance <= minLength)
-    //                {
-    //                    marker.SetActive(false);
-    //                }
-    //                else
-    //                {
-    //                    marker.SetActive(true);
-    //                    marker.transform.position = raycastHits[0].pose.position;
-
-    //                    if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
-    //                    {
-    //                        isActive = false;
-    //                        OnSpawnPoint?.Invoke();
-    //                        Point point = Instantiate(pointPref, raycastHits[0].pose.position, pointPref.transform.rotation);
-    //                        PlanePoints.AddPoint(point);
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        else
-    //        {
-    //            marker.SetActive(false);
-    //        }
-    //        yield return null;
-    //    }
-    //}
-
     IEnumerator FindMinMaxLengthOfPoint_Coroutine(Vector3 fromPoint, float maxLength, float minLength, string description = null)
     {
         isActive = true;
 
         while (isActive)
         {
-            Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+            List<ARRaycastHit> raycastHits = new();
 
-            if (Physics.Raycast(ray, out RaycastHit hit))
+            if (raycastManager.Raycast(new Vector2(Screen.width / 2, Screen.height / 2), raycastHits, TrackableType.Planes))
             {
-                float distance = Vector3.Distance(fromPoint, hit.point);
-
-                if (hit.collider != null)
+                if (raycastHits.Count > 0)
                 {
-                    visibleLine.SetSecondPos(hit.point);
+                    float distance = Vector3.Distance(fromPoint, raycastHits[0].pose.position);
+                    visibleLine.SetSecondPos(raycastHits[0].pose.position);
+
                     if (distance > maxLength || distance <= minLength)
                     {
                         marker.SetActive(false);
@@ -176,23 +134,65 @@ public class PlaneDetection : MonoBehaviour, IPointInPlaneDetection
                     else
                     {
                         marker.SetActive(true);
-                        marker.transform.position = hit.point;
+                        marker.transform.position = raycastHits[0].pose.position;
 
-                        if (Input.GetMouseButtonDown(0))
+                        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
                         {
                             isActive = false;
                             OnSpawnPoint?.Invoke();
-                            Point point = Instantiate(pointPref, hit.point, pointPref.transform.rotation);
-                            //points.Add(point);
+                            Point point = Instantiate(pointPref, raycastHits[0].pose.position, pointPref.transform.rotation);
                             PlanePoints.AddPoint(point);
-                            visibleLine.ActivateLineRenderer(false);
                         }
                     }
                 }
             }
+            else
+            {
+                marker.SetActive(false);
+            }
             yield return null;
         }
     }
+
+    //IEnumerator FindMinMaxLengthOfPoint_Coroutine(Vector3 fromPoint, float maxLength, float minLength, string description = null)
+    //{
+    //    isActive = true;
+
+    //    while (isActive)
+    //    {
+    //        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
+
+    //        if (Physics.Raycast(ray, out RaycastHit hit))
+    //        {
+    //            float distance = Vector3.Distance(fromPoint, hit.point);
+
+    //            if (hit.collider != null)
+    //            {
+    //                visibleLine.SetSecondPos(hit.point);
+    //                if (distance > maxLength || distance <= minLength)
+    //                {
+    //                    marker.SetActive(false);
+    //                }
+    //                else
+    //                {
+    //                    marker.SetActive(true);
+    //                    marker.transform.position = hit.point;
+
+    //                    if (Input.GetMouseButtonDown(0))
+    //                    {
+    //                        isActive = false;
+    //                        OnSpawnPoint?.Invoke();
+    //                        Point point = Instantiate(pointPref, hit.point, pointPref.transform.rotation);
+    //                        //points.Add(point);
+    //                        PlanePoints.AddPoint(point);
+    //                        visibleLine.ActivateLineRenderer(false);
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        yield return null;
+    //    }
+    //}
 
     //private void FindPoint()
     //{

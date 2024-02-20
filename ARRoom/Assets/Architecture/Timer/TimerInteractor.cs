@@ -17,7 +17,13 @@ namespace Lessons.Architecture
 
         public void PlayTimer(float startTime, float endTime = 0)
         {
-            Coroutines.StartRoutine(TimerCoroutine(startTime, endTime));
+            //Coroutines.StartRoutine(TimerCoroutine(startTime, endTime));
+            Coroutines.Start_Coroutine(TimerCoroutine(startTime, endTime));
+        }
+
+        public void StopTimer()
+        {
+            Coroutines.Destroy_Coroutine();
         }
 
         private IEnumerator TimerCoroutine(float startTime, float endTime)

@@ -18,6 +18,10 @@ namespace Lessons.Architecture
         public override void Initialize()
         {
             base.Initialize();
+        }
+
+        public void RestoreHealth()
+        {
             CurrentHealth = MaxHealth;
             OnPlayerLifeChange?.Invoke(CurrentHealth);
         }

@@ -8,8 +8,10 @@ public class MovePanel : Panel
     [SerializeField] protected Vector3 to;
     [SerializeField] protected float time;
     [SerializeField] protected CanvasGroup canvasGroup;
+
     protected PanelAnimationInteractor animationInteractor;
     protected Tween tween;
+
     public override void Initialize()
     {
         base.Initialize();

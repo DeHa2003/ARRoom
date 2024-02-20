@@ -33,6 +33,8 @@ public class TimerVisualize : MonoBehaviour
         timerInteractor.OnStartTimer -= OnStartTimer;
         timerInteractor.OnIterationTimer -= OnIterationTimer;
         timerInteractor.OnFinishTimer -= OnFinishTimer;
+
+        timerInteractor.StopTimer();
     }
 
     private void OnStartTimer()

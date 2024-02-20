@@ -6,6 +6,7 @@ using UnityEngine;
 public class SecondViewMapPanel : MovePanel
 {
     [SerializeField] private HealthVisualize healthVisualize;
+    [SerializeField] private ScoreVisualize scoreVisualize;
     [SerializeField] private TimerVisualize timerVisualize;
 
     private HitItemsInteractor findItemsInteractor;
@@ -19,6 +20,7 @@ public class SecondViewMapPanel : MovePanel
         findItemsInteractor = Game.GetInteractor<HitItemsInteractor>();
 
         healthVisualize.Initialize();
+        scoreVisualize.Initialize();
         timerVisualize.Initialize();
     }
 
@@ -27,19 +29,15 @@ public class SecondViewMapPanel : MovePanel
         base.OpenPanel();
 
         findItemsInteractor.ActivateFind(true);
-        roomInteractor.SpawnObjects();
-
-        timerVisualize.OnFinishTimerEvent.AddListener(() =>
-        {
-            roomInteractor.ShowRoom();
-        });
-        timerVisualize.StartTimer(5);
+        roomInteractor.ShowRoom();
+        timerVisualize.StartTimer(60);
     }
 
     public override void ClosePanel()
     {
         base.ClosePanel();
-
+        roomInteractor.HideRoom(OnComplete: roomInteractor.DestroyCurrentRoom);
+        timerVisualize.StopTimer();
         findItemsInteractor.ActivateFind(false);
     }
 }
