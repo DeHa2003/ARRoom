@@ -6,16 +6,20 @@ namespace Lessons.Architecture
 {
     public class ScoreRepository : Repository
     {
-        private const string KEY = "MAX_SCORE_KEY";
-        public int maxscore { get; set; }
+        private const string KEY_HITSCORE = "KEY_HITSCORE";
+        private const string KEY_TOTALSCORE = "KEY_TOTALSCORE";
+        public int HitScore_Record { get; set; }
+        public float TotalScore_Record { get; set; }
         public override void Initialize()
         {
-            maxscore = PlayerPrefs.GetInt(KEY, 0);
+            TotalScore_Record = PlayerPrefs.GetFloat(KEY_TOTALSCORE, 0);
+            HitScore_Record = PlayerPrefs.GetInt(KEY_HITSCORE, 0);
         }
 
         public override void Save()
         {
-            PlayerPrefs.SetInt(KEY, maxscore);
+            PlayerPrefs.SetFloat(KEY_TOTALSCORE, TotalScore_Record);
+            PlayerPrefs.SetInt(KEY_HITSCORE, HitScore_Record);
         }
     }
 }

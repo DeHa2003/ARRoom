@@ -12,6 +12,7 @@ public class Scene
     public Scene(SceneConfig sceneConfig)
     {
         this.sceneConfig = sceneConfig;
+
         interactorsBase = new InteractorsBase(this.sceneConfig);
         repositoriesBase = new RepositoriesBase(this.sceneConfig);
     }

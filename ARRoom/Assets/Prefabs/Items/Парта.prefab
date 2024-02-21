@@ -29,6 +29,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035693342147774449}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
@@ -36,7 +37,6 @@ Transform:
   m_Children:
   - {fileID: 7239718988096902032}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6610747050365872594
 MonoBehaviour:
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80914b4939692e248b47302334083012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nameItem: "\u043F\u0430\u0440\u0442\u0430"
   itemStatus: 0
 --- !u!65 &3047093097613849904
 BoxCollider:
@@ -59,9 +60,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035693342147774449}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.33, y: 0.1, z: 0.29}
   m_Center: {x: 0, y: 0.251, z: 0}
 --- !u!65 &8746161730675376967
@@ -72,9 +81,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035693342147774449}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.01760663, y: 0.30384696, z: 0.025000006}
   m_Center: {x: 0.15569669, y: 0.14907652, z: 0.133}
 --- !u!65 &4582862505936661741
@@ -85,9 +102,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035693342147774449}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.01760663, y: 0.30384696, z: 0.025000006}
   m_Center: {x: 0.15569669, y: 0.14907652, z: -0.133}
 --- !u!65 &1754835142512159949
@@ -98,9 +123,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035693342147774449}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.01760663, y: 0.30384696, z: 0.025000006}
   m_Center: {x: -0.1556967, y: 0.14907652, z: -0.133}
 --- !u!65 &753392654901892471
@@ -111,9 +144,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7035693342147774449}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.01760663, y: 0.30384696, z: 0.025000006}
   m_Center: {x: -0.1556967, y: 0.14907652, z: 0.133}
 --- !u!1001 &7201853331316667515
@@ -121,6 +162,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7035693342147774448}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 88ba5f5e4cc87c94e92078a0508630b7, type: 3}
@@ -188,6 +230,9 @@ PrefabInstance:
       value: "\u041F\u0430\u0440\u0442\u0430"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88ba5f5e4cc87c94e92078a0508630b7, type: 3}
 --- !u!4 &7239718988096902032 stripped
 Transform:

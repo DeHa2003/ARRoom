@@ -12,7 +12,7 @@ public class Notification : MovePanel
         from = gameObject.transform.localPosition;
     }
 
-    public void SetText(string textHand, string textDescription)
+    public virtual void SetData(string textHand, string textDescription)
     {
         this.textHand.text = textHand;
         this.textDescription.text = textDescription;
@@ -36,7 +36,7 @@ public class Notification : MovePanel
         if (tween != null) { tween.Kill(); }
 
         panel.SetActive(true);
-        tween = transform.DOLocalMove(from + new Vector3(0, -50, 0), time).OnComplete(() =>
+        tween = transform.DOLocalMove(from + new Vector3(0, 50, 0), time).OnComplete(() =>
         {
             Invoke(nameof(ClosePanel), 2);
         });

@@ -7,11 +7,15 @@ using UnityEngine;
 public class HealthVisualize : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textHealth;
+
     private HealthInteractor healthInteractor;
+    private ScoreInteractor scoreInteractor;
 
     public void Initialize()
     {
         healthInteractor = Game.GetInteractor<HealthInteractor>();
+        scoreInteractor = Game.GetInteractor<ScoreInteractor>();
+
         healthInteractor.OnPlayerLifeChange += UpdateHealth;
         textHealth.text = healthInteractor.MaxHealth.ToString();
     }

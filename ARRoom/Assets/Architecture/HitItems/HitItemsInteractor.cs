@@ -21,7 +21,7 @@ namespace Lessons.Architecture
             if (activate)
             {
                 isActive = true;
-                Coroutines.StartRoutine(ActivateFind_Coroutine());
+                Coroutines.Start_Coroutine(ActivateFind_Coroutine());
             }
             else
             {
@@ -45,10 +45,10 @@ namespace Lessons.Architecture
                         {
                             if (hit.collider.TryGetComponent(out Item item))
                             {
-                                if (item.ItemStatus == ItemStatus.Change)
+                                if (item.ItemStatus == ItemStatus.Spawn)
                                 {
                                     OnHitChangeItem?.Invoke(item);
-                                    Debug.Log("Ударили правильный предмет");
+                                    Debug.Log("Ударили заспавнящийся предмет");
                                 }
                                 else
                                 {

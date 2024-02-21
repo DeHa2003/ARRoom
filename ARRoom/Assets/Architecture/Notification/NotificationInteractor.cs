@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,9 +19,19 @@ namespace Lessons.Architecture
             notification.CreateNotification(hand, description);
         }
 
+        public void CreateActionNotification(Action action, string description)
+        {
+            notification.CreateActionNotification(action, description);
+        }
+
         public void DestroyNotification()
         {
             notification.DestroyNotification();
+        }
+
+        public void DestroyActionNotification()
+        {
+            notification.DestroyActionNotification();
         }
     }
 }
@@ -28,6 +39,8 @@ namespace Lessons.Architecture
 public interface INotification
 {
     void CreateNotification(string hand, string description);
+    void CreateActionNotification(Action action, string description);
     void DestroyNotification();
+    void DestroyActionNotification();
 }
 

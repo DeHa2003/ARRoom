@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,9 @@ namespace Lessons.Architecture
 {
     public class PanelAnimationInteractor : Interactor
     {
-        public void CanvasGroupAlpha(CanvasGroup canvasGroup, float from, float to, float time)
+        public void CanvasGroupAlpha(CanvasGroup canvasGroup, float from, float to, float time, Action OnEndAnimation = null)
         {
-            Coroutines.StartRoutine(CanvasGroup_Alpha_Coroutine(canvasGroup, from, to, time));
+            Coroutines.StartRoutine(CanvasGroup_Alpha_Coroutine(canvasGroup, from, to, time, OnEndAnimation));
         }
 
         public void ChangeGridLayoutSpacing(GridLayoutGroup gridLayoutGroup, Vector2 from, Vector2 to, float timer)
@@ -31,7 +32,7 @@ namespace Lessons.Architecture
             }
         }
 
-        private IEnumerator CanvasGroup_Alpha_Coroutine(CanvasGroup canvasGroup, float from, float to, float timer)
+        private IEnumerator CanvasGroup_Alpha_Coroutine(CanvasGroup canvasGroup, float from, float to, float timer, Action OnEndAnimation)
         {
             float t = 0.0f;
             canvasGroup.alpha = from;
@@ -43,6 +44,7 @@ namespace Lessons.Architecture
                    canvasGroup.alpha = Mathf.Lerp(from, to, t); //Может быть удалён
                 yield return 0;
             }
+            OnEndAnimation?.Invoke();
         }
     }
 }

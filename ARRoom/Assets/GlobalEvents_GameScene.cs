@@ -7,8 +7,8 @@ using UnityEngine.Events;
 
 public class GlobalEvents_GameScene : MonoBehaviour
 {
-    public UnityEvent OnStartGame;
-    public UnityEvent OnLoseGame;
+    public UnityEvent OnStartGameEvent;
+    public UnityEvent OnLoseGameEvent;
 
     private HealthInteractor healthInteractor;
     private HitItemsInteractor hitItemsInteractor;
@@ -22,41 +22,36 @@ public class GlobalEvents_GameScene : MonoBehaviour
         notificationInteractor = Game.GetInteractor<NotificationInteractor>();
         scoreInteractor = Game.GetInteractor<ScoreInteractor>();
 
-        hitItemsInteractor.OnHitOther += RemoveHealth;
-        hitItemsInteractor.OnHitChangeItem += DestroyItem;
-        hitItemsInteractor.OnActivateFind += RestoreData;
-        healthInteractor.OnPlayerOutOfLives += DiactivateFindinItems;
+        hitItemsInteractor.OnHitOther += OnHitOther;
+        hitItemsInteractor.OnHitChangeItem += OnHitSuccess;
+        healthInteractor.OnPlayerOutOfLives += OnLoseGame;
     }
 
-    private void DestroyItem(Item item)
+    private void OnHitSuccess(Item item)
     {
-        scoreInteractor.AddScore(this, 1);
+        notificationInteractor.CreateNotification("Сообщение", "Предмет " + item.NameItem + " был найден");
+        scoreInteractor.AddScore(1);
+        scoreInteractor.AddSuccessHitCount();
         Destroy(item.gameObject);
     }
 
-    private void RestoreData()
+    private void OnHitOther(Item item)
     {
-        healthInteractor.RestoreHealth();
-        scoreInteractor.RestoreScore();
+        scoreInteractor.AddLoseHitCount();
+        healthInteractor.RemoveHealth();
     }
 
-    public void DiactivateFindinItems()
+    public void OnLoseGame()
     {
         hitItemsInteractor.ActivateFind(false);
-        OnLoseGame?.Invoke();
-        notificationInteractor.CreateNotification("Сообщение", "Вы проиграли");
-    }
-
-    private void RemoveHealth(Item item)
-    {
-        healthInteractor.RemoveHealth(this);
+        OnLoseGameEvent?.Invoke();
     }
 
     private void OnDestroy()
     {
-        hitItemsInteractor.OnHitOther -= RemoveHealth;
-        healthInteractor.OnPlayerOutOfLives -= DiactivateFindinItems;
-        hitItemsInteractor.OnHitChangeItem -= DestroyItem;
-        hitItemsInteractor.OnActivateFind -= RestoreData;
+        hitItemsInteractor.OnHitOther -= OnHitOther;
+        healthInteractor.OnPlayerOutOfLives -= OnLoseGame;
+        hitItemsInteractor.OnHitChangeItem -= OnHitSuccess;
+        
     }
 }

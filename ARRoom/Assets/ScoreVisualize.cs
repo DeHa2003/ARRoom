@@ -13,12 +13,12 @@ public class ScoreVisualize : MonoBehaviour
     public void Initialize()
     {
         scoreInteractor = Game.GetInteractor<ScoreInteractor>();
-        scoreInteractor.OnChangedScore += UpdateScore;
-        textScore.text = scoreInteractor.Score.ToString();
+        scoreInteractor.OnChangedHitScore += UpdateScore;
+        textScore.text = scoreInteractor.HitScore.ToString();
     }
 
-    public void UpdateScore(int health)
+    public void UpdateScore(int score)
     {
-        textScore.text = health.ToString();
+        textScore.text = score.ToString();
     }
 }

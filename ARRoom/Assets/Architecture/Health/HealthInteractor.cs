@@ -18,6 +18,7 @@ namespace Lessons.Architecture
         public override void Initialize()
         {
             base.Initialize();
+            RestoreHealth();
         }
 
         public void RestoreHealth()
@@ -26,7 +27,7 @@ namespace Lessons.Architecture
             OnPlayerLifeChange?.Invoke(CurrentHealth);
         }
 
-        public void RemoveHealth(object sender, int value = 1)
+        public void RemoveHealth(int value = 1)
         {
             if(CurrentHealth <= 0)
             {

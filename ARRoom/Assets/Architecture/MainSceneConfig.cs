@@ -13,8 +13,6 @@ public class MainSceneConfig : SceneConfig
     {
         var interactorsMap = new Dictionary<Type, Interactor>();
 
-        //CreateInteractor<SettingsInteractor>(interactorsMap);
-        //CreateInteractor<AudioInteractor>(interactorsMap);
         CreateInteractor<NotificationInteractor>(interactorsMap);
         CreateInteractor<PanelAnimationInteractor>(interactorsMap);
         CreateInteractor<RoomInteractor>(interactorsMap);
@@ -22,10 +20,7 @@ public class MainSceneConfig : SceneConfig
         CreateInteractor<TimerInteractor>(interactorsMap);
         CreateInteractor<HitItemsInteractor>(interactorsMap);
         CreateInteractor<HealthInteractor>(interactorsMap);
-        //CreateInteractor<ShopInteractor>(interactorsMap);
         CreateInteractor<ScoreInteractor>(interactorsMap);
-        //CreateInteractor<BallsInteractor>(interactorsMap);
-        //CreateInteractor<BankInteractor>(interactorsMap);
 
         return interactorsMap;
     }
@@ -34,11 +29,7 @@ public class MainSceneConfig : SceneConfig
     {
         var repositoriesMap = new Dictionary<Type, Repository>();
 
-        //CreateRepository<SettingsRepository>(repositoriesMap);
-        //CreateRepository<ShopRepository>(repositoriesMap);
         CreateRepository<ScoreRepository>(repositoriesMap);
-        //CreateRepository<BallsRepository>(repositoriesMap);
-        //CreateRepository<BankRepository>(repositoriesMap);
 
         return repositoriesMap;
     }

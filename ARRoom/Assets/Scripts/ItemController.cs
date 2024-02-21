@@ -78,7 +78,7 @@ public class ItemController : MonoBehaviour
     {
         for (int i = 0; i < Random.Range(5, freeItems.Count); i++)
         {
-            SpawnFirstItem(ItemStatus.Spawn);
+            SpawnFirstItem(ItemStatus.None);
         }
     }
 
@@ -107,7 +107,8 @@ public class ItemController : MonoBehaviour
 
     public void SpawnSecondItems()
     {
-        int indexPosSpawn = Random.Range(0, freeItems.Count);
+        int indexPosSpawn = freeItems.Count;
+
         if(indexPosSpawn == 0)
         {
             return;
@@ -115,7 +116,7 @@ public class ItemController : MonoBehaviour
 
         for (int i = 0; i < indexPosSpawn; i++)
         {
-            SpawnSecondObject(ItemStatus.Change);
+            SpawnSecondObject(ItemStatus.Spawn);
         }
     }
 
