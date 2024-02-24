@@ -31,6 +31,7 @@ public class NotificationAction : MovePanel
     public void ActionYes()
     {
         action?.Invoke();
+        ClosePanel();
     }
 
     public override void OpenPanel()

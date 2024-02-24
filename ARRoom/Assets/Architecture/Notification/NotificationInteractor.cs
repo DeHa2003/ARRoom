@@ -14,14 +14,19 @@ namespace Lessons.Architecture
             this.notification = notification;
         }
 
-        public void CreateNotification(string hand, string description)
+        public void CreateCustomNotification(string hand, string description)
         {
             notification.CreateNotification(hand, description);
         }
 
-        public void CreateActionNotification(Action action, string description)
+        public void CreateCustomActionNotification(Action action, string description)
         {
             notification.CreateActionNotification(action, description);
+        }
+
+        public void CreateOnExitGameActionNotification()
+        {
+            notification.CreateActionNotification(Application.Quit, "Вы уверены что хотите выйти из игры?");
         }
 
         public void DestroyNotification()

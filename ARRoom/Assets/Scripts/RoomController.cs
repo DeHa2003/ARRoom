@@ -8,6 +8,8 @@ public class RoomController : MonoBehaviour, IRoomController
 {
     public Room CurrentRoom { get; private set; }
 
+    private List<Room> currentRooms = new();
+
     public Action OnShowRoom;
     public Action OnHideRoom;
 
@@ -39,16 +41,18 @@ public class RoomController : MonoBehaviour, IRoomController
         Vector3 spawn = (pointsToSpawn[2].transform.position + pointsToSpawn[1].transform.position) / 2;
         CurrentRoom.transform.position = spawn + new Vector3(0, CurrentRoom.transform.localScale.y / 2, 0);
         CurrentRoom.Initialize();
+
+        currentRooms.Add(CurrentRoom);
     }
 
     public void DestroyCurrentRoom()
     {
-        if(CurrentRoom == null)
+        if (currentRooms.Count == 0)
         {
             return;
         }
 
-        Destroy(CurrentRoom.gameObject);
+        currentRooms[0].Destroy();
     }
 
     public void SpawnObjects()

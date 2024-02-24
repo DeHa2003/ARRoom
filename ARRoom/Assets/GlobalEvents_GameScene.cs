@@ -29,7 +29,7 @@ public class GlobalEvents_GameScene : MonoBehaviour
 
     private void OnHitSuccess(Item item)
     {
-        notificationInteractor.CreateNotification("Сообщение", "Предмет " + item.NameItem + " был найден");
+        notificationInteractor.CreateCustomNotification("Сообщение", "Предмет " + item.NameItem + " был найден");
         scoreInteractor.AddScore(1);
         scoreInteractor.AddSuccessHitCount();
         Destroy(item.gameObject);

@@ -21,7 +21,7 @@ public class NotificationControl : MonoBehaviour, INotification
         }
 
         notification = Instantiate(notificationPrefab);
-        ChangeTransform(notification);
+        ChangeTransformNotification(notification);
 
         notification.Initialize();
         notification.SetData(hand, description);
@@ -35,7 +35,8 @@ public class NotificationControl : MonoBehaviour, INotification
             DestroyActionNotification();
         }
 
-        actionNotification = Instantiate(notificationActionPrefab);
+        actionNotification = Instantiate(notificationActionPrefab, canvasTransform);
+        ChangeTransformNotificationAction(actionNotification);
 
         actionNotification.Initialize();
         actionNotification.SetData(action, description);
@@ -58,7 +59,7 @@ public class NotificationControl : MonoBehaviour, INotification
         notification = null;
     }
 
-    private void ChangeTransform(Notification notification)
+    private void ChangeTransformNotification(Notification notification)
     {
         if (notification.TryGetComponent(out RectTransform rectTransform))
         {
@@ -66,6 +67,14 @@ public class NotificationControl : MonoBehaviour, INotification
             rectTransform.position = pos.position;
             rectTransform.localScale = Vector3.one;
             rectTransform.rotation = canvasTransform.rotation;
+        }
+    }
+
+    private void ChangeTransformNotificationAction(NotificationAction notification)
+    {
+        if (notification.TryGetComponent(out RectTransform rectTransform))
+        {
+            rectTransform.position = new Vector2(Screen.width/2, Screen.height/2);
         }
     }
 }

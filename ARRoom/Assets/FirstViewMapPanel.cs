@@ -26,4 +26,9 @@ public class FirstViewMapPanel : MovePanel
         timerVisualize.StopTimer();
         base.ClosePanel();
     }
+
+    public void Exit()
+    {
+        roomInteractor.HideRoom(OnComplete: roomInteractor.DestroyCurrentRoom);
+    }
 }

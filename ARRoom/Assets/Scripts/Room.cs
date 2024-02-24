@@ -35,6 +35,11 @@ public class Room : MonoBehaviour
         itemController.SpawnSecondItems();
     }
 
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
+
     private float GetMinScaleValue(float a, float b, float c)
     {
         float min = a;
